@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kevin & Susan | Nuestra Boda</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* PORTADA DE BIENVENIDA */
+
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background:
+    linear-gradient(rgba(45,55,36,.85),rgba(45,55,36,.90)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85')
+    center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.welcome-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.invitation-envelope {
+  width: 100%;
+  max-width: 430px;
+  min-height: 530px;
+  border: 1px solid #C4A76D;
+  outline: 1px solid rgba(196,167,109,.35);
+  outline-offset: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+}
+
+.invitation-envelope .couple {
+  font-family: 'Great Vibes', cursive;
+  font-size: 65px;
+  color: #E5CEA0;
+  margin: 25px 0;
+}
+
+.invitation-envelope .open-button {
+  margin-top: 35px;
+  padding: 16px 30px;
+  border: 1px solid #D0B477;
+  background: transparent;
+  color: white;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  transition: .3s;
+}
+
+.invitation-envelope .open-button:hover {
+  background: #B99B64;
+}
+
+.invitation-envelope .floral {
+  font-size: 35px;
+  color: #D7C49A;
+  margin: 15px;
+}
+:root {
+  --olive: #65704B;
+  --dark: #414832;
+  --gold: #B99B64;
+  --cream: #FAF8F1;
+  --beige: #EDE6D8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--dark);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+section {
+  padding: 75px 20px;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(39,47,30,.58),rgba(39,47,30,.68)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=85')
+    center/cover;
+  color: white;
+  padding: 35px 20px;
+}
+
+.hero:before {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  border: 1px solid rgba(231,210,165,.7);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 650px;
+}
+
+.small-title {
+  letter-spacing: 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.names {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(65px, 13vw, 110px);
+  font-weight: normal;
+  line-height: 1.25;
+  color: #F2DDAE;
+  margin: 25px 0;
+}
+
+.ampersand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 45px;
+  color: white;
+}
+
+.hero-date {
+  letter-spacing: 4px;
+  font-size: 17px;
+  margin-top: 25px;
+}
+
+.hero p {
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.ornament {
+  color: var(--gold);
+  font-size: 27px;
+  margin: 20px;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  font-size: 48px;
+  color: var(--olive);
+  font-weight: normal;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 37px;
+  color: var(--olive);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.intro {
+  max-width: 600px;
+  margin: auto;
+  font-size: 14px;
+  line-height: 2;
+  color: #686858;
+}
+
+.countdown-section {
+  background: var(--olive);
+  color: white;
+}
+
+.countdown-section .section-title {
+  color: white;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+
+.time-box {
+  border: 1px solid rgba(255,255,255,.5);
+  padding: 20px 12px;
+  min-width: 75px;
+}
+
+.time-box strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 35px;
+  font-weight: normal;
+}
+
+.time-box span {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.events {
+  background: var(--cream);
+}
+
+.event-card {
+  max-width: 550px;
+  margin: 25px auto;
+  padding: 35px 25px;
+  background: white;
+  border: 1px solid #E8E0D2;
+  box-shadow: 0 5px 25px rgba(0,0,0,.04);
+}
+
+.event-icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.event-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  color: var(--olive);
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.event-card p {
+  font-size: 13px;
+  line-height: 2;
+  color: #69695F;
+}
+
+.event-time {
+  font-size: 21px !important;
+  color: var(--gold) !important;
+  margin: 12px 0;
+  font-weight: 600;
+}
+
+.map-button, .submit-button {
+  display: inline-block;
+  background: var(--olive);
+  color: white;
+  text-decoration: none;
+  border: none;
+  padding: 14px 24px;
+  margin-top: 22px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.map-button:hover, .submit-button:hover {
+  background: var(--dark);
+}
+
+.rsvp {
+  background: var(--beige);
+}
+
+.rsvp-container {
+  max-width: 500px;
+  margin: auto;
+  background: var(--cream);
+  padding: 35px 25px;
+}
+
+.rsvp p {
+  font-size: 13px;
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #D8D0C0;
+  background: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: var(--dark);
+  outline-color: var(--olive);
+}
+
+footer {
+  padding: 55px 20px;
+  background: var(--dark);
+  color: white;
+}
+
+footer .script {
+  color: #E2C58F;
+  font-size: 55px;
+}
+
+footer p {
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-top: 15px;
+}
+
+.music-button {
+  position: fixed;
+  z-index: 10;
+  bottom: 20px;
+  right: 20px;
+  background: var(--olive);
+  color: white;
+  border: 1px solid var(--gold);
+  border-radius: 50px;
+  padding: 13px 18px;
+  cursor: pointer;
+  font-size: 12px;
+  box-shadow: 0 3px 12px #0003;
+}
+
+@media(max-width:480px) {
+  section { padding: 60px 16px; }
+  .hero-date { font-size: 13px; }
+  .time-box { min-width: 65px; }
+}
+</style>
+</head>
+
+<body>
+<div class="welcome-screen" id="welcomeScreen">
+
+  <div class="invitation-envelope">
+
+    <p class="small-title">
+      UNA INVITACIÓN ESPECIAL
+    </p>
+
+    <div class="floral">❦</div>
+
+    <h1 class="couple">
+      Kevin & Susan
+    </h1>
+
+    <p>¡NOS CASAMOS!</p>
+
+    <div class="floral">✧ ❀ ✧</div>
+
+    <p class="hero-date">
+      28 · NOVIEMBRE · 2026
+    </p>
+
+    <button class="open-button" onclick="openInvitation()">
+      ABRIR INVITACIÓN
+    </button>
+
+    <p style="font-size:10px;margin-top:20px;">
+      Nos encantaría compartir este día contigo
+    </p>
+
+  </div>
+
+</div>
+
+<!-- PORTADA -->
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="small-title">NOS CASAMOS</p>
+
+    <h1 class="names">
+      Kevin
+      <span class="ampersand">&</span>
+      Susan
+    </h1>
+
+    <div class="ornament">✧ ❦ ✧</div>
+
+    <p>
+      Hay momentos que merecen ser eternos<br>
+      y queremos compartir este momento contigo.
+    </p>
+
+    <div class="hero-date">
+      28 · NOVIEMBRE · 2026
+    </div>
+  </div>
+</section>
+
+<!-- INVITACIÓN -->
+
+<section>
+  <h2 class="script">Con la bendición de Dios</h2>
+  <div class="ornament">❦</div>
+
+  <h2 class="section-title">¡Nos casamos!</h2>
+
+  <p class="intro">
+    Después de escribir nuestra historia de amor,
+    hemos decidido dar el paso más hermoso de nuestras vidas.
+    <br><br>
+    Nos encantaría que nos acompañes en este día tan especial,
+    para celebrar juntos el comienzo de nuestra nueva historia.
+  </p>
+</section>
+
+<!-- CUENTA REGRESIVA -->
+
+<section class="countdown-section">
+  <h2 class="section-title">La cuenta regresiva</h2>
+  <p>Falta muy poco para nuestro gran día</p>
+
+  <div class="countdown">
+    <div class="time-box">
+      <strong id="days">00</strong>
+      <span>DÍAS</span>
+    </div>
+
+    <div class="time-box">
+      <strong id="hours">00</strong>
+      <span>HORAS</span>
+    </div>
+
+    <div class="time-box">
+      <strong id="minutes">00</strong>
+      <span>MINUTOS</span>
+    </div>
+
+    <div class="time-box">
+      <strong id="seconds">00</strong>
+      <span>SEGUNDOS</span>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+
+<section class="events">
+  <h2 class="script">Acompáñanos</h2>
+  <h2 class="section-title">Detalles de nuestro día</h2>
+
+  <div class="event-card">
+    <div class="event-icon">⛪</div>
+
+    <h3>Ceremonia religiosa</h3>
+
+    <p>
+      Iglesia Santa Teresa de Calcuta<br>
+      Cayma - Enace
+    </p>
+
+    <p class="event-time">9:45 A.M.</p>
+
+    <p>
+      Nos uniremos en matrimonio ante Dios,
+      rodeados de nuestros seres queridos.
+    </p>
+
+    <a class="map-button"
+       href="https://www.google.com/maps/search/?api=1&query=Iglesia+Santa+Teresa+de+Calcuta+Cayma+Enace"
+       target="_blank">
+       VER UBICACIÓN
+    </a>
+  </div>
+
+  <div class="ornament">✧</div>
+
+  <div class="event-card">
+    <div class="event-icon">🥂</div>
+
+    <h3>Recepción</h3>
+
+    <p>
+      Glegos Salones y Eventos<br>
+      Cerro Colorado
+    </p>
+
+    <p class="event-time">4:30 P.M.</p>
+
+    <p>
+      Después de la ceremonia,
+      queremos celebrar contigo este día inolvidable.
+    </p>
+
+    <a class="map-button"
+       href="https://www.google.com/maps/search/?api=1&query=Glegos+Salones+y+Eventos+Cerro+Colorado+Arequipa"
+       target="_blank">
+       VER UBICACIÓN
+    </a>
+  </div>
+</section>
+
+<!-- CONFIRMACIÓN -->
+
+<section class="rsvp">
+  <h2 class="script">Tu presencia es nuestro regalo</h2>
+  <h2 class="section-title">Confirma tu asistencia</h2>
+
+  <div class="rsvp-container">
+    <p>
+      Nos hará muy felices contar contigo.
+      Por favor, confirma tu asistencia
+      completando los siguientes datos.
+    </p>
+
+    <form id="rsvpForm">
+
+      <input
+        type="text"
+        id="guestName"
+        placeholder="Nombre y apellido"
+        required>
+
+      <select id="attendance" required>
+        <option value="">¿Nos acompañarás?</option>
+        <option value="Sí, asistiré">¡Sí, asistiré!</option>
+        <option value="No podré asistir">No podré asistir</option>
+      </select>
+
+      <select id="guests">
+        <option value="1">1 persona</option>
+        <option value="2">2 personas</option>
+        <option value="3">3 personas</option>
+        <option value="4">4 personas</option>
+        <option value="5">5 personas</option>
+      </select>
+
+      <textarea
+        id="message"
+        rows="3"
+        placeholder="Déjanos un mensaje (opcional)">
+      </textarea>
+
+      <button type="submit" class="submit-button">
+        CONFIRMAR ASISTENCIA
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- DESPEDIDA -->
+
+<footer>
+  <h2 class="script">Kevin & Susan</h2>
+  <div class="ornament">❦</div>
+  <p>28 · NOVIEMBRE · 2026</p>
+  <p>EL COMIENZO DE NUESTRO PARA SIEMPRE</p>
+</footer>
+
+<!-- MÚSICA -->
+
+<audio id="weddingMusic" loop>
+  <source src="hasta-mi-final.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-button" id="musicButton">
+  ♫ Reproducir música
+</button>
+
+<script>
+function openInvitation() {
+
+  document.getElementById("welcomeScreen")
+    .classList.add("hidden");
+
+  const music = document.getElementById("weddingMusic");
+
+  music.play().then(() => {
+    document.getElementById("musicButton")
+      .textContent = "♫ Pausar música";
+  }).catch(() => {
+    document.getElementById("musicButton")
+      .textContent = "♫ Reproducir música";
+  });
+
+}
+
+// CUENTA REGRESIVA
+const weddingDate = new Date(
+  "2026-11-28T09:45:00-05:00"
+).getTime();
+
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  if (distance <= 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+    return;
+  }
+
+  document.getElementById("days").textContent =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  document.getElementById("hours").textContent =
+    Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+  document.getElementById("minutes").textContent =
+    Math.floor((distance / (1000 * 60)) % 60);
+
+  document.getElementById("seconds").textContent =
+    Math.floor((distance / 1000) % 60);
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+
+// MÚSICA DE FONDO
+const music = document.getElementById("weddingMusic");
+const musicButton = document.getElementById("musicButton");
+
+async function playMusic() {
+  try {
+    await music.play();
+    musicButton.textContent = "♫ Pausar música";
+  } catch (error) {
+    musicButton.textContent = "♫ Toca para escuchar";
+  }
+}
+
+musicButton.addEventListener("click", () => {
+  if (music.paused) {
+    playMusic();
+  } else {
+    music.pause();
+    musicButton.textContent = "♫ Reproducir música";
+  }
+});
+
+// Intentar reproducir automáticamente al abrir.
+//window.addEventListener("load", playMusic);
+
+
+// CONFIRMACIÓN POR WHATSAPP
+document.getElementById("rsvpForm")
+.addEventListener("submit", function(event) {
+
+  event.preventDefault();
+
+  const name =
+    document.getElementById("guestName").value;
+
+  const attendance =
+    document.getElementById("attendance").value;
+
+  const guests =
+    document.getElementById("guests").value;
+
+  const message =
+    document.getElementById("message").value;
+
+  // REEMPLAZAR POR EL NÚMERO DE WHATSAPP
+  // Código de país + número, sin espacios ni signos.
+  const phone = "51928504084";
+
+  const text =
+    "💍 CONFIRMACIÓN DE BODA - KEVIN Y SUSAN\n\n" +
+    "Nombre: " + name + "\n" +
+    "Asistencia: " + attendance + "\n" +
+    "Cantidad de personas: " + guests + "\n" +
+    "Mensaje: " + message;
+
+  const url =
+    "https://wa.me/" + phone +
+    "?text=" + encodeURIComponent(text);
+
+  window.open(url, "_blank");
+
+});
+
+</script>
+
+</body>
+</html>
